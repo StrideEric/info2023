@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block contenido %}
+    <h1>Categorías</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h3>Filtrar por categoría:</h3>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Seleccionar categoría
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                        <li><a class="dropdown-item" href="#">Todas</a></li>
+                        <li><a class="dropdown-item" href="#">Categoría 1</a></li>
+                        <li><a class="dropdown-item" href="#">Categoría 2</a></li>
+                        <li><a class="dropdown-item" href="#">Categoría 3</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                {% for noticia in noticias %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ noticia.titulo }}</h5>
+                                #imprimir la imagen de noticia
+                                <p class="card-text">{{ noticia.descripcion }}</p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+    
+{% endblock %}
+
+
+

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block contenido %}
+    <h1>Perfil de Usuario</h1>
+    <!-- Aquí va el contenido del perfil del usuario -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static 'img/usuario.png' %}" alt="Imagen de usuario" class="img-fluid">
+            </div>
+            <div class="col-md-8">
+                <h2>{{ user.username }}</h2>
+                <p>{{ user.email }}</p>
+                <p>{{ user.first_name }} {{ user.last_name }}</p>
+                <p>{{ user.date_joined }}</p>
+                <p>{{ user.last_login }}</p>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
