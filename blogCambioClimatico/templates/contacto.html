@@ -3,31 +3,48 @@
 {% load static %}
 
 {% block contenido %}
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+
     <h1>CONTACTO</h1>
-    <h2>Aca debemos colocar el contenido sobre CONTACTO</h2>
 
     <div class="container">
-        
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <h2>Formulario de contacto</h2>
-            </div>
-        </div>
-        <form >
-            <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email">
-            </div>
-            <div class="mb-3">
-                <label for="mensaje" class="form-label">Mensaje</label>
-                <textarea class="form-control" id="mensaje" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Formulario de contacto</h2>
+                <div class="card_form">
+                    <form class="form">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <div class="nombre">
+                                <input type="text" class="form-control" id="nombre">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <div class="email">
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Telefono</label>
+                            <div class="telefono">
+                                <input type="text" class="form-control" id="telefono">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="asunto" class="form-label">Asunto</label>
+                            <div class="asunto">
+                                <input type="text" class="form-control" id="asunto">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensaje" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="mensaje" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn_send">Enviar</button>
+                    </form>
+                </div>
 
     </div>
 

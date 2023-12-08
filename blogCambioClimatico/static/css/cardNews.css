@@ -1,0 +1,30 @@
+.card {
+    height: 400px; /* Define el tamaño fijo de la imagen */
+    min-width: calc(33.33% - 20px);
+    overflow: hidden; /* Oculta el contenido que se desborda */
+}
+
+.card .description {
+    min-height: 50px; /* Define el tamaño mínimo de la descripción */
+    max-height: 200px; /* Define el tamaño máximo de la descripción */
+    overflow: hidden; /* Oculta el contenido que se desborda */
+}
+
+.card:hover {
+    border-color: #0d6efd; /* Agrega un borde azul al hacer hover */
+    border-radius: 10px; /* Agrega un borde redondeado al hacer hover */
+    box-shadow: 0 0 2px #0d6efd; /* Agrega una sombra al hacer hover */
+}
+    
+
+@media (min-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+    }
+}
+
+
+
+
+

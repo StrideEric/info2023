@@ -2,46 +2,127 @@
 
 {% load static %}
 
+
 {% block contenido %}
+<link rel="stylesheet" href="{% static 'css/filter.css' %}">
+<link rel="stylesheet" href="{% static 'css/cards.css' %}">
+
+
     <h1>Categorías</h1>
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <h3>Filtrar por categoría:</h3>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        Seleccionar categoría
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="filterDropdown">
-                        <li><a class="dropdown-item" href="#">Todas</a></li>
-                        <li><a class="dropdown-item" href="#">Categoría 1</a></li>
-                        <li><a class="dropdown-item" href="#">Categoría 2</a></li>
-                        <li><a class="dropdown-item" href="#">Categoría 3</a></li>
-                        
-                    </ul>
+            <h3>Noticias</h3>
+        </div>
+        <!--Filtro-->
+        <div class="row">
+            <div class="col">
+                <div class="filtro-container ">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
+                    </div>
+                    <div id="filtroDropdown" class="dropdown filtro-dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="filtroDropdown">
+                            <li><a class="dropdown-item" href="#" data-value="default">Todas</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="1">Categoría 1</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="2">Categoría 2</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="3">Categoría 3</a></li>
+                        </ul>
+                    </div>
+                    <div id="filtroDropdown" class="dropdown filtro-dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="filtroDropdown">
+                            <li><a class="dropdown-item" href="#" data-value="default" >Mas reciente</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="1">Mas antiguo</a></li>
+                        </ul>
+                    </div>
+                    <div id="filtroDropdown" class="dropdown filtro-dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="filtroDropdown">
+                            <li><a class="dropdown-item" href="#" data-value="default">Ascendente</a></li>
+                            <li><a class="dropdown-item" href="#" data-value="1">Descendente</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
-            <div class="row">
-                {% for noticia in noticias %}
-                    <div class="col-md-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ noticia.titulo }}</h5>
-                                #imprimir la imagen de noticia
-                                <p class="card-text">{{ noticia.descripcion }}</p>
-                                <a href="#" class="btn btn-primary">Ver más</a>
-                            </div>
-                        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for noticia in noticias %}
+                <div class="col">
+                <div class="card h-100">
+                    <div class="card-header text-center bg-light">
+                        <h5 class="card-title">{{ noticia.titulo }}</h5>
                     </div>
-                {% endfor %}
-            </div>
+                    {% if noticia.imagen %}
+                        <img src="{{ noticia.imagen.url }}" class="card-img-top" alt=""> 
+                    {% else %}
+                        <img src="{% static 'img/imgNotFound.jpg' %}" class="card-img-top" alt="..."> 
+                    {% endif %}
+                    <div class="card-body">
+                    <!--<h5 class="card-title">{{ noticia.titulo }}</h5>-->
+                    <p class="card-text">{{ noticia.descripcion }}</p>
+                    </div>
+                    <div class="card-footer text-center bg-light">
+                    <small class="text-body-secondary">{{noticia.fecha_actualizado}}</small>
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
         </div>
+       
+
+
+
+
     </div>
 
 
-    
+
+    <script>
+        //defectValue.js
+
+        document.addEventListener('DOMContentLoaded', function () {
+          // Obtener todos los dropdowns en la página
+          var dropdowns = document.querySelectorAll('.filtro-dropdown');
+      
+          // Iterar sobre cada dropdown
+          dropdowns.forEach(function(dropdown) {
+            // Obtener elementos específicos de cada dropdown
+            var dropdownButton = dropdown.querySelector('.dropdown-toggle');
+            var dropdownItems = dropdown.querySelectorAll('.dropdown-item');
+      
+            // Asignar evento de clic a cada elemento del dropdown
+            dropdownItems.forEach(function(item) {
+              item.addEventListener('click', function() {
+                // Obtener el valor de la opción clickeada
+                var selectedValue = item.getAttribute('data-value');
+      
+                // Establecer la clase 'active' en la opción clickeada
+                dropdownItems.forEach(function(item) {
+                  item.classList.remove('active');
+                });
+                item.classList.add('active');
+      
+                // Actualizar el texto del botón con la opción clickeada
+                dropdownButton.textContent = item.textContent;
+              });
+            });
+      
+            // Establecer la opción por defecto al cargar la página
+            var defaultOptionValue = "default"; // Cambia esto al valor que desees seleccionar por defecto
+            var defaultOption = dropdown.querySelector('.dropdown-menu [data-value="' + defaultOptionValue + '"]');
+            defaultOption.classList.add('active');
+            dropdownButton.textContent = defaultOption.textContent;
+          });
+        });
+      </script>
+      
+      
+                
 {% endblock %}
 
 
