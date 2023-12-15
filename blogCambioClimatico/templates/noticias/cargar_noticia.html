@@ -18,9 +18,9 @@
                                 {{ form.titulo }}
                         </div>
                         <div class="form-group">
-                            <label for="descripcion">Descripcion</label>
-                            <div class="descripcion">
-                                {{ form.descripcion }}
+                            <label for="contenido">Descripcion</label>
+                            <div class="contenido">
+                                {{ form.contenido }}
                         </div>
                         <div class="form-group">
                             <label for="imagen">Imagen</label>
@@ -40,25 +40,9 @@
         </div>
 {% else %}
     <h1>Debes estar logueado para crear una noticia</h1>
+    <h1>Debes estar logueado para crear una noticia</h1>
+    <h1>Debes estar logueado para crear una noticia</h1>
+    <h1>Debes estar logueado para crear una noticia</h1>
 {% endif %}
 {% endblock %}
 
-
-
-
-<!-- 
-    class Crear_Noticia(CreateView):
-    model = Noticia
-    template_name = 'noticias/crear_noticia.html'
-    form_class = Formulario_Noticia
-    success_url = reverse_lazy('noticias:home_noticias')
-
-
-
-    class Formulario_Noticia(forms.ModelForm):
-
-    class Meta:
-        model = Noticia
-        fields = ['titulo', 'descripcion', 'imagen', 'categoria']
-        
-    -->

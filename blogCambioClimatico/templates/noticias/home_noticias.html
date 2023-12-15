@@ -6,6 +6,7 @@
 {% block contenido %}
 <link rel="stylesheet" href="{% static 'css/filter.css' %}">
 <link rel="stylesheet" href="{% static 'css/cards.css' %}">
+<link rel="stylesheet" href="{% static 'css/cardNews.css' %}">
 
 
     <h1>Categorías</h1>
@@ -18,38 +19,73 @@
             <div class="col">
                 <div class="filtro-container ">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
+						<form method="GET" action="{% url 'noticias:home_noticias' %}">
+							<input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2" name="q" value="{{ query }}">
+							<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+						</form>
                     </div>
                     <div id="filtroDropdown" class="dropdown filtro-dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            Todas
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="filtroDropdown">
-                            <li><a class="dropdown-item" href="#" data-value="default">Todas</a></li>
-                            <li><a class="dropdown-item" href="#" data-value="1">Categoría 1</a></li>
-                            <li><a class="dropdown-item" href="#" data-value="2">Categoría 2</a></li>
-                            <li><a class="dropdown-item" href="#" data-value="3">Categoría 3</a></li>
+
+                            {% if "?" in request.get_full_path %}
+                                <li><a class="dropdown-item" href="{{ request.get_full_path }}&categoria=0">Todas</a></li>
+                                {% for c in categorias %}
+                                    <li><a class="dropdown-item" href="{{ request.get_full_path }}&categoria={{c.id}}">{{c.nombre}}</a></li>
+                                {% endfor %}
+                            {% else %}
+                                <li><a class="dropdown-item" href="?categoria=0">Todas</a></li>
+                                {% for c in categorias %}
+                                    <li><a class="dropdown-item" href="?categoria={{c.id}}">{{c.nombre}}</a></li>
+                                {% endfor %}
+                        {% endif %}
+                                                        
                         </ul>
                     </div>
                     <div id="filtroDropdown" class="dropdown filtro-dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% if "?" in request.get_full_path %}
+                                {% if request.GET.orden == "reciente" %}
+                                    Mas reciente
+                                {% elif request.GET.orden == "antiguo" %}
+                                    Mas antiguo
+                                {% elif request.GET.orden == "a-z" %}
+                                    a-z
+                                {% elif request.GET.orden == "z-a" %}
+                                    z-a              
+                                {% endif %}
+                            {% else %}
+                                Mas reciente
+                            {% endif %}
+
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="filtroDropdown">
+                            <!--
                             <li><a class="dropdown-item" href="#" data-value="default" >Mas reciente</a></li>
                             <li><a class="dropdown-item" href="#" data-value="1">Mas antiguo</a></li>
-                        </ul>
-                    </div>
-                    <div id="filtroDropdown" class="dropdown filtro-dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="filtroDropdown">
-                            <li><a class="dropdown-item" href="#" data-value="default">Ascendente</a></li>
-                            <li><a class="dropdown-item" href="#" data-value="1">Descendente</a></li>
+                            -->
+                            {% if "?" in request.get_full_path %}
+                                <li><a class="dropdown-item" href="{{ request.get_full_path }}&orden=reciente">Mas reciente</a></li>
+                                <li><a class="dropdown-item" href="{{ request.get_full_path }}&orden=antiguo">Mas antiguo</a></li>
+                            {% else %}
+                                <li><a class="dropdown-item" href="?orden=reciente">Mas nuevo</a></li>
+                                <li><a class="dropdown-item" href="?orden=antiguo">Mas antiguo</a></li>
+                            {% endif %}
+                            {% if "?" in request.get_full_path %}
+                                <li><a class="dropdown-item" href="{{ request.get_full_path }}&orden=a-z">a-z</a></li>
+                                <li><a class="dropdown-item" href="{{ request.get_full_path }}&orden=z-a">z-a</a></li>
+                            {% else %}
+                                <li><a class="dropdown-item" href="?orden=a-z">a-z</a></li>
+                                <li><a class="dropdown-item" href="?orden=z-a">z-a</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for noticia in noticias %}
                 <div class="col">
@@ -58,25 +94,37 @@
                         <h5 class="card-title">{{ noticia.titulo }}</h5>
                     </div>
                     {% if noticia.imagen %}
-                        <img src="{{ noticia.imagen.url }}" class="card-img-top" alt=""> 
+                        <a href="{% url 'noticias:detalle_noticia' noticia.pk %}">
+                            <img src="{{ noticia.imagen.url }}" class="card-img-top" alt=""> 
+                        </a>
                     {% else %}
                         <img src="{% static 'img/imgNotFound.jpg' %}" class="card-img-top" alt="..."> 
                     {% endif %}
                     <div class="card-body">
-                    <!--<h5 class="card-title">{{ noticia.titulo }}</h5>-->
-                    <p class="card-text">{{ noticia.descripcion }}</p>
+                        <!--<h5 class="card-title">{{ noticia.titulo }}</h5>-->
+                        <p class="card-text">{{ noticia.contenido }}</p>
                     </div>
                     <div class="card-footer text-center bg-light">
-                    <small class="text-body-secondary">{{noticia.fecha_actualizado}}</small>
+                        <small class="text-body-secondary">{{noticia.creado}}</small>
+                    </div>
+					<div class="card-footer text-center bg-light">
+                        <small class="text-body-secondary">{{noticia.categoria}}</small>
+                    </div>
+                    <div class="card-footer text-center bg-light">
+                        <small class="text-body-secondary">{{noticia.usuario}}</small>
+                    </div>
+                    <div class="card-footer text-center bg-light">
+                        <a href="{% url 'noticias:detalle_noticia' noticia.pk %}">Ver mas</a>
+                        {% if request.user == n.usuario or request.user.is_staff %}
+                            <a href="{% url 'noticias:modificar_noticia' noticia.pk %}">Modificar</a>
+                            <a href="{% url 'noticias:borrar_noticia' noticia.pk %}">Borrar</a>
+                        {% endif %}
                     </div>
                 </div>
                 </div>
             {% endfor %}
         </div>
        
-
-
-
 
     </div>
 

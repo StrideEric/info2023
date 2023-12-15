@@ -1,14 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
 /* NAVBAR  */
 .navbar {
     border-radius: 0;
     padding: 5rem 1rem;
-    
 }
 
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
 }
+
+
+.content {
+  padding-top: 70px; 
+}
+
 
 header {
     background-color: #333;
