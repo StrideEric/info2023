@@ -3,21 +3,28 @@
 {% load static %}
 
 {% block contenido %}
-    <h1>Perfil de Usuario</h1>
-    <!-- Aquí va el contenido del perfil del usuario -->
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
-            <div class="col-md-4">
-                <img src="{% static 'img/usuario.png' %}" alt="Imagen de usuario" class="img-fluid">
+            <div class="col-md-4 text-center">
+                <img src="{% static 'img/usuario.png' %}" alt="Imagen de usuario" class="img-fluid rounded-circle" width="150px">
             </div>
             <div class="col-md-8">
-                <h2>{{ user.username }}</h2>
-                <p>{{ user.email }}</p>
-                <p>{{ user.first_name }} {{ user.last_name }}</p>
-                <p>{{ user.date_joined }}</p>
-                <p>{{ user.last_login }}</p>
+                <h1 class="display-4"> Usuario: {{ user.username }}</h1>
+                <p class="lead"> Nombre completo: {{ user.first_name }} {{ user.last_name }}</p>
+                <p>Email: {{ user.email }}</p>
+                <p class="text-muted">Miembro desde: {{ user.date_joined|date:"F d, Y" }}</p>
             </div>
         </div>
+        <hr class="my-4">
+        <h2>Actividad Reciente</h2>
+        <!-- Aquí puedes agregar detalles sobre la actividad reciente del usuario -->
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <h4>Último Inicio de Sesión</h4>
+                <p>{{ user.last_login|date:"F d, Y h:i A" }}</p>
+            </div>
+            <!-- Puedes agregar más detalles según sea necesario -->
+        </div>
     </div>
-    
 {% endblock %}
+
