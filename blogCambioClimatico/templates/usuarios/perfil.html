@@ -6,13 +6,21 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-4 text-center">
-                <img src="{% static 'img/usuario.png' %}" alt="Imagen de usuario" class="img-fluid rounded-circle" width="150px">
+                <div class="profile-picture">
+                    {% if user.profile.picture %}
+                        <img src="{{ user.profile.picture.url }}" alt="{{ user.username }} - Imagen de perfil" class="img-fluid rounded-circle" width="150px">
+                    {% else %}
+                        <img src="{% static 'img/usuario.png' %}" alt="Imagen de usuario por defecto" class="img-fluid rounded-circle" width="150px">
+                    {% endif %}
+                </div>
             </div>
             <div class="col-md-8">
-                <h1 class="display-4"> Usuario: {{ user.username }}</h1>
-                <p class="lead"> Nombre completo: {{ user.first_name }} {{ user.last_name }}</p>
-                <p>Email: {{ user.email }}</p>
-                <p class="text-muted">Miembro desde: {{ user.date_joined|date:"F d, Y" }}</p>
+                <div class="profile-info">
+                    <h1 class="display-4">¡Hola, {{ user.username }}!</h1>
+                    <p class="lead">Nombre completo: {{ user.first_name }} {{ user.last_name }}</p>
+                    <p>Email: {{ user.email }}</p>
+                    <p class="text-muted">Miembro desde: {{ user.date_joined|date:"F d, Y" }}</p>
+                </div>
             </div>
         </div>
         <hr class="my-4">
@@ -27,4 +35,3 @@
         </div>
     </div>
 {% endblock %}
-
