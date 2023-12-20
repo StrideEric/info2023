@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+
 {% load static %}
 
 {% block contenido  %}
@@ -10,7 +11,13 @@
             <div class="col-md-12">
                 <form action="" method="post" enctype="multipart/form-data" class="container">
                     {% csrf_token %}
-                    <h3>Formulario para crear noticia</h3>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 mt-4">
+                                <h3>Crea tu noticia</h3>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card_form">
                         <div class="form-group">
                             <label for="titulo">Titulo</label>
@@ -39,10 +46,13 @@
             </div>
         </div>
 {% else %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-4">
     <h1>Debes estar logueado para crear una noticia</h1>
-    <h1>Debes estar logueado para crear una noticia</h1>
-    <h1>Debes estar logueado para crear una noticia</h1>
-    <h1>Debes estar logueado para crear una noticia</h1>
+        </div>
+    </div>
+</div>
 {% endif %}
 {% endblock %}
 
