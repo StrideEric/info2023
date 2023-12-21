@@ -1,0 +1,63 @@
+/* Agrega estilos para el contenedor del formulario */
+.registration-form-container {
+    max-width: 800px; /* Establece el ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor en la página */
+}
+
+/* Agrega estilos para el formulario */
+.registration-form {
+    background-color: #34c69c; /* Color de fondo del formulario */
+    padding: 20px; /* Añade un relleno alrededor del formulario */
+    border-radius: 10px; /* Agrega bordes redondeados al formulario */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave al formulario */
+}
+
+/* Agrega estilos para el título del formulario */
+.form-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* Agrega estilos para el botón de envío */
+.submit-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #403f3f;
+    padding: 5px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.submit-button:hover {
+    background-color: #45a049; /* Cambia el color de fondo al pasar sobre el botón */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Añade espacio entre los grupos de campos */
+}
+
+/* Agrega estilos para las etiquetas de los campos */
+.form-group label {
+    display: block; /* Convierte las etiquetas en bloques para facilitar el diseño */
+    font-weight: bold; /* Hace que las etiquetas sean negritas */
+    margin-bottom: 5px; /* Añade espacio entre la etiqueta y el campo */
+}
+
+/* Agrega estilos específicos para el campo de contraseña */
+#id_password1, #id_password2{
+    width: 100%; /* Establece el ancho al 100% del contenedor */
+    padding: 10px; /* Añade relleno alrededor del campo */
+    margin-bottom: 10px; /* Añade espacio en la parte inferior del campo */
+}
+
+.error-message {
+    color: #ff0000; /* Color rojo para resaltar el mensaje de error */
+    font-size: 14px; /* Tamaño de fuente */
+    margin-top: 5px; /* Espacio superior */
+}
