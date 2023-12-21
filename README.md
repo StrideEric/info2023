@@ -5,12 +5,7 @@ TPI del Informatorio 2023
 Cambio climatico
 [Cambio Climatico](https://wallpapercave.com/wp/wp4078374.jpg)
 
-## Integrantes del equipo
-- Integrante
-- Integrante
-- Integrante
-- Integrante
-- Integrante
-- Integrante
-- Integrante
-- Integrante
+## Integrantes del equipo:
+- Giménez Ríos, Tatiana Tamara.
+- Stride, Eric.
+- Tomadin, Nicolas.
