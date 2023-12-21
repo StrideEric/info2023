@@ -2,10 +2,10 @@
 var pathname = window.location.pathname;
 
 // Cambia el comportamiento del navbar según la página actual
-if (pathname.includes("home")) {
+if (pathname === "/") { // Si la página actual es el index
     document.addEventListener('scroll', function() {
         var navbar = document.getElementById('navbar');
-        var section = document.getElementById('section1');
+        var section = document.getElementById('acerca-de'); // Sección que marca el límite para cambiar el navbar, en este caso la primer seccion
         navbar.classList.remove('scroll-bg');
         var scrollPosition = window.scrollY;
 
@@ -19,6 +19,8 @@ if (pathname.includes("home")) {
     document.getElementById("navbar").classList.add("scroll-bg");
 
     }
+
+
     
 
 

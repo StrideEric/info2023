@@ -4,6 +4,8 @@ from apps.noticias.models import Noticia
 from .models import Comentario
 from django.urls import reverse_lazy
 from .forms import Form_Modificacion
+
+
 def Agregar_Comentario(request,pk):
 
 	texto = request.POST.get('comentario',None)

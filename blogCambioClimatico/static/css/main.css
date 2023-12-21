@@ -2,14 +2,51 @@
   box-sizing: border-box;
 }
 
-/* NAVBAR  */
-.navbar {
-    border-radius: 0;
-    padding: 5rem 1rem;
-}
 
 body {
     font-family: Arial, sans-serif;
+    background-color: #fff;
+}
+
+.titulo_principal {
+  font-size: 4rem;
+  color: #0d0d0d;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.subtitulo_principal {
+  font-size: 1.5rem;
+  color: #0d0d0d;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-weight: lighter;
+}
+
+.titulo_secundario {
+  font-size: 2rem;
+  color: #0d0d0d;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.subtitulo_secundario {
+  font-size: 1.5rem;
+  color: #0d0d0d;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: lighter;
+}
+
+
+.divForNoticias {
+  margin-top: 1rem;
 }
 
 
@@ -22,88 +59,11 @@ header {
     background-color: #333;
 }
 
-#navbar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    transition: background-color 0.3s ease; /* Agrega transición para suavizar el cambio de color */
-}
-
-#navbar ul {
-    display: flex;
-}
-
-#navbar li {
-    margin-right: 20px;
-}
-
-#navbar a {
-    text-decoration: none;
-    color: white;
-}
-
 section {
-    margin-top: 1em;
-    padding: 1em;
-    
+  margin-top: 1em;
+  padding: 1em;
+  
 }
-
-/* Cambia el color de fondo cuando el scroll pasa la sección 1 */
-
-#navbar.scroll-bg {
-    background-color: #262626;
-}
-
-
-
-
-/* FOOTER */
-.card-footer {
-    padding: 0.75rem 1.25rem;
-    background-color: #262626;
-    border-top: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
-  }
-
-
-.footer {
-    background: transparent;
-    padding-top: 0.5rem;
-}
-
-/*    ICONOS del FOOTER */
-.iconos{
-    background-color: #262626;
-    border-radius: 10px;
-}
-.iconos:hover{
-    background-color: #1c1c1c;
-    border-radius: 10px;
-    border: 1px solid #000099;
-    box-shadow: 0 0 10px #1c1c1c;
-    animation-name: rotate;
-    animation-duration: 1s;
-}
-
-@keyframes rotate {
-    0% {
-      transform: rotate(0);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-@keyframes shake {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(-10px); }
-    40% { transform: translateX(10px); }
-    60% { transform: translateX(-10px); }
-    80% { transform: translateX(10px); }
-    100% { transform: translateX(0); }
-  }
-
 
 
 
@@ -202,3 +162,33 @@ header.masthead .post-heading .meta a {
   }
 }
 
+
+
+
+/*  Evita que se oculte contenido debajo del navbar, no encontre otra forma :( */
+.contenidoPrincipal {
+  margin-top: 3rem;
+}
+#portada {
+  margin-top: -3rem; /* resta el margin-top del contenido principal, para que en la portada se encuentre pegado a la parte superior de la pagina */
+}
+
+
+
+.icono_borrar_comentario,
+.icono_editar_comentario {
+  color: #0d0d0d;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  float: right;
+}
+
+
+.icono_borrar_comentario:hover {
+  color: #f25757; /* Cambiar el color al pasar el mouse por encima */
+}
+.icono_editar_comentario:hover {
+  color: #57c6f2; /* Cambiar el color al pasar el mouse por encima */
+}

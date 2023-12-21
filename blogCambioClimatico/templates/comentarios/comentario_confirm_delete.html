@@ -1,11 +1,47 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-	
-	<form method="post">{% csrf_token %}
-    	<p>Estas seguro que desa eliminar: "{{ object }}"?</p>
-	    {{ form }}
-	    <input type="submit" value="CONFIRMAR">
-	</form>
+  
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card">
+        <form method="post" action="{% url 'comentarios:borrar_comentario' pk=object.pk %}" class="confirmation-form">
+          {% csrf_token %}
+          <p>Esta por eliminar el comentario:</p>
+		  <p style="padding-left: 1rem;">{{ object }}</p>
+          <div class="form-group row text-center">
+			<p class="text-center">Desea eliminarlo?</p>
+			<div class="container px-4">
+				<div class="row gx-5">
+					<div class="col">
+						<button type="submit" class="btn btn_delete">CONFIRMAR</button>
+					</div>
+					<div class="col">
+						<a href="#" onclick="window.history.back(); return false;" class="btn btn_cancel">CANCELAR</a>
+					</div>
+				</div>
+			</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock contenido %}
+
+
+{% if request.user.is_authenticated %}
+<form method="POST" action="{% url 'comentarios:agregar' noticia.pk %}" class="form_comentario">
+	{% csrf_token %}
+	<div class="form-group row">
+		<div class="col-9">
+			<textarea class="form-control" name="comentario"></textarea>
+		</div>
+		<div class="col-3">
+			<button type="submit" class="btn btn_comentar">COMENTAR</button>
+		</div>
+	</div>
+</form>
+{% endif %}

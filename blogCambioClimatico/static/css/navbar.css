@@ -1,0 +1,51 @@
+
+/* NAVBAR  
+.navbar {
+    border-radius: 0;
+    padding: 5rem 1rem;
+    background-color: transparent;
+}
+*/
+
+
+#navbar a:hover {
+    color: #56bf70;
+}
+
+
+#navbar {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    overflow: hidden;
+    transition: background-color 0.3s ease; /* Agrega transición para suavizar el cambio de color */
+}
+
+#navbar ul {
+    display: flex;
+}
+
+#navbar li {
+    margin-right: 20px;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Cambia el color de fondo cuando el scroll pasa la sección seleccionada en navbar.js */
+#navbar.scroll-bg {
+    background-color: #56bf70;
+}
+
+
+#navbar.scroll-bg a:hover {
+    color: #0d0d0d; /* Cambia el color del enlace cuando se activa scroll-bg */
+}
+
+
+

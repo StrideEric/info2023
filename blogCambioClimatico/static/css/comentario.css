@@ -1,0 +1,80 @@
+/* 
+			<h4 class="text-center">COMENTARIOS</h4>
+			{% for c in comentarios %}
+				<div class="card mb-3 card_comentario">
+					<div class="card-body">
+						<a class="comentario_usaurio"> {{c.usuario}} </a> : <a class="comentario_texto">{{c.texto}}</a> <!--comentario-->
+						{% if request.user == c.usuario or request.user.is_staff %} 
+							<a href="{% url 'comentarios:borrar_comentario' c.pk%}"><i class="fas fa-times icono_borrar_comentario"></i></a> <a href="{% url 'comentarios:modificar_comentario' c.pk%}"><i class="fas fa-edit icono_editar_comentario"></i></a>
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+			{% if request.user.is_authenticated %}
+				<form method="POST" action="{% url 'comentarios:agregar' noticia.pk %}" class="form_comentario">
+					{% csrf_token %}
+					<div class="form-group row">
+						<div class="col-9">
+							<textarea class="form-control" name="comentario"></textarea>
+						</div>
+						<div class="col-3">
+							<button type="submit" class="btn btn_comentar">COMENTAR</button>
+						</div>
+					</div>
+				</form>
+			{% endif %}
+*/
+
+
+.card_comentario {
+    /* Estilos para la tarjeta de comentario */
+    border: 1px solid #f2e6d8;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.form_comentario {
+    /* Estilos para el formulario de comentario */
+    margin-top: 20px;
+}
+
+.form_comentario textarea {
+    /* Estilos para el campo de texto del comentario */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #f2e6d8;
+    border-radius: 5px;
+}
+
+
+.card_comentario:hover {
+    border-color: #6BBF80;
+    border-radius: 5px;
+    box-shadow: 0 0 2px #6BBF80;
+}
+
+
+.comentario_usuario {
+    /* Estilos para el cuerpo de la tarjeta de comentario */
+    color: #0d0d0d;
+    font-weight: bold;
+    text-decoration: underline;
+    
+}
+
+
+.comentario_texto {
+    /* Estilos para el texto del comentario */
+    color: #0d0d0d;
+    text-decoration: none;
+    font-weight:lighter;
+
+}
+
+.img_detalle_noticia {
+    display: flex;
+    justify-content: center;
+}
+
+
