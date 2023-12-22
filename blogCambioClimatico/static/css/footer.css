@@ -1,0 +1,50 @@
+/* FOOTER */
+.card-footer {
+    padding: 0.75rem 1.25rem;
+    background-color: #262626;
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
+  }
+
+
+.footer {
+    background: transparent;
+    padding-top: 0.5rem;
+}
+
+.pieDePagina {
+  margin-top: 2rem;
+}
+
+/*    ICONOS del FOOTER */
+.iconos{
+    background-color: #262626;
+    border-radius: 10px;
+}
+.iconos:hover{
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    border: 1px solid #262626;
+    box-shadow: 0 0 10px #1c1c1c;
+    animation-name: rotate;
+    animation-duration: 1s;
+}
+
+@keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
+  }
+

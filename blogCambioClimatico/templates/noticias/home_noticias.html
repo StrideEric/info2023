@@ -4,28 +4,38 @@
 
 
 {% block contenido %}
-<link rel="stylesheet" href="{% static 'css/filter.css' %}">
+<!--<link rel="stylesheet" href="{% static 'css/filter.css' %}"> -->
 <link rel="stylesheet" href="{% static 'css/cards.css' %}">
 <link rel="stylesheet" href="{% static 'css/cardNews.css' %}">
 
-
-    <h1>Categorías</h1>
     <div class="container">
-        <div class="row">
-            <h3>Noticias</h3>
+        <div class="row text-center">
+            <p class="titulo_principal">Noticias</p>
+        </div>
+        <div class="row text-center">
+            <p class="subtitulo_principal">Estas son las noticias mas relevantes hasta la actualidad</p>
         </div>
         <!--Filtro-->
-        <div class="row">
-            <div class="col">
-                <div class="filtro-container ">
+        <div class="row g-0">
+            <div class="col-sm-6 col-md-8">
+                <!--<div class="filtro-container "> -->
                     <div class="input-group">
 						<form method="GET" action="{% url 'noticias:home_noticias' %}">
-							<input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2" name="q" value="{{ query }}">
-							<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+                            <div class="row align-items-end">
+                                <div class="col-10">
+                                    <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="button-addon2" name="q" value="{{ query }}">
+                                </div>
+                                <div class="col-2">
+                                    <button class="btn" type="submit" id="button-addon2">Buscar</button>
+                                </div>
+                            </div>
 						</form>
                     </div>
-                    <div id="filtroDropdown" class="dropdown filtro-dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="row align-items-end rowDropdown">
+                    <div id="filtroDropdown" class="dropdown filtro-dropdown col">
+                        <button class="btn dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             Todas
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="filtroDropdown">
@@ -40,12 +50,12 @@
                                 {% for c in categorias %}
                                     <li><a class="dropdown-item" href="?categoria={{c.id}}">{{c.nombre}}</a></li>
                                 {% endfor %}
-                        {% endif %}
+                            {% endif %}
                                                         
                         </ul>
                     </div>
-                    <div id="filtroDropdown" class="dropdown filtro-dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div id="filtroDropdown" class="dropdown filtro-dropdown col">
+                        <button class="btn dropdown-toggle" type="button" id="filtroDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             {% if "?" in request.get_full_path %}
                                 {% if request.GET.orden == "reciente" %}
                                     Mas reciente
@@ -55,11 +65,12 @@
                                     a-z
                                 {% elif request.GET.orden == "z-a" %}
                                     z-a              
+                                {% else %}
+                                    Mas reciente
                                 {% endif %}
                             {% else %}
                                 Mas reciente
                             {% endif %}
-
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="filtroDropdown">
                             <!--
@@ -83,44 +94,58 @@
                         </ul>
                     </div>
                 </div>
+                <!--</div> -->
             </div>
         </div>
 
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-1 row-cols-md-3 g-4 divForNoticias">
             {% for noticia in noticias %}
                 <div class="col">
-                <div class="card h-100">
-                    <div class="card-header text-center bg-light">
-                        <h5 class="card-title">{{ noticia.titulo }}</h5>
-                    </div>
-                    {% if noticia.imagen %}
-                        <a href="{% url 'noticias:detalle_noticia' noticia.pk %}">
-                            <img src="{{ noticia.imagen.url }}" class="card-img-top" alt=""> 
-                        </a>
-                    {% else %}
-                        <img src="{% static 'img/imgNotFound.jpg' %}" class="card-img-top" alt="..."> 
-                    {% endif %}
-                    <div class="card-body">
-                        <!--<h5 class="card-title">{{ noticia.titulo }}</h5>-->
-                        <p class="card-text">{{ noticia.contenido }}</p>
-                    </div>
-                    <div class="card-footer text-center bg-light">
-                        <small class="text-body-secondary">{{noticia.creado}}</small>
-                    </div>
-					<div class="card-footer text-center bg-light">
-                        <small class="text-body-secondary">{{noticia.categoria}}</small>
-                    </div>
-                    <div class="card-footer text-center bg-light">
-                        <small class="text-body-secondary">{{noticia.usuario}}</small>
-                    </div>
-                    <div class="card-footer text-center bg-light">
-                        <a href="{% url 'noticias:detalle_noticia' noticia.pk %}">Ver mas</a>
-                        {% if request.user == n.usuario or request.user.is_staff %}
-                            <a href="{% url 'noticias:modificar_noticia' noticia.pk %}">Modificar</a>
-                            <a href="{% url 'noticias:borrar_noticia' noticia.pk %}">Borrar</a>
+                    <div class="card h-100 cardNoticia">
+                        <div class="card-header text-center">
+                            <h5 class="card-title">{{ noticia.titulo }}</h5>
+                        </div>
+                        {% if noticia.imagen %}
+                            <a href="{% url 'noticias:detalle_noticia' noticia.pk %}">
+                                <img src="{{ noticia.imagen.url }}" class="card-img-top" alt=""> 
+                            </a>
+                        {% else %}
+                            <img src="{% static 'img/imgNotFound.jpg' %}" class="card-img-top" alt="..."> 
                         {% endif %}
+                        <div class="card-body">
+                            <!--<h5 class="card-title">{{ noticia.titulo }}</h5>-->
+                            <p class="card-text">{{ noticia.contenido }}</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <div>
+                                <small style="color: black; text-decoration: underline;">Fecha de publicación</small>:
+                                <small class="text-body-secondary">{{noticia.creado}}</small>
+                            </div>
+                            <div>
+                                <small style="color: black; text-decoration: underline;">Autor</small>:
+                                <small class="text-body-secondary">{{noticia.usuario}}</small>
+                            </div>
+                            <div>
+                                <small style="color: black; text-decoration: underline;">Categoria</small>:
+                                <small class="text-body-secondary">{{noticia.categoria}}</small>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <div class="row">
+                                <div class="col">
+                                    <a class="detalleNoticia" href="{% url 'noticias:detalle_noticia' noticia.pk %}">Leer más</a>
+                                </div>
+                            {% if request.user == n.usuario or request.user.is_staff %}
+                                <div class="col">
+                                    <a class="modificarNoticia" href="{% url 'noticias:modificar_noticia' noticia.pk %}">Modificar</a>
+                                </div>
+                                <div class="col">
+                                    <a class="borrarNoticia" href="{% url 'noticias:borrar_noticia' noticia.pk %}">Borrar</a>
+                                </div>
+                            {% endif %}
+                            </div>
+                        </div>
                     </div>
-                </div>
                 </div>
             {% endfor %}
         </div>

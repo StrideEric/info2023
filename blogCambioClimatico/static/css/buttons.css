@@ -1,0 +1,108 @@
+.btn {
+    background-color: #0d0d0d;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #6bbf80; 
+    color: #0d0d0d;
+}
+
+
+
+.btn.dropdown-toggle {
+    background-color: #0d0d0d; 
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 8rem; 
+}
+
+.btn.dropdown-toggle:hover {
+    background-color: #6bbf80;
+    color: #0d0d0d;
+}
+.btn.dropdown-toggle::after {
+    display: none; /* Oculta la flecha del boton */
+}
+
+.dropdown-menu {
+    overflow-y: auto; /* Agregar una barra de desplazamiento vertical si es necesario */
+    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+}
+
+.dropdown-item:hover {
+    background-color: #57c6f2;
+    color: #0d0d0d;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: bold
+}
+
+.form-control{
+    border-radius: 10px;
+    border: 1px solid #0d0d0d; /* Color de línea del form control */
+    box-shadow: none;
+    padding: 10px 20px;
+    height: 40px;
+    transition: all 0.3s ease 0s;
+}
+
+.form-control:hover{
+    border-color: #6bbf80;
+}
+
+
+.form-control:focus {
+    border-color: #6bbf80; 
+    box-shadow: 0 0 0 0.2rem rgba(107, 191, 128, 0.25); /* genera una caja sombrada al input*/
+}
+
+
+.btn_delete {
+    background-color: #0d0d0d;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.btn_delete:hover {
+    background-color: #f25757; 
+    color: #0d0d0d;
+}
+
+
+
+/* transiciones */
+
+
+#button-addon2:focus, #filtroDropdown:focus {
+    background-color: #57c6f2;
+    color: #0d0d0d;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.btn_comentar {
+    background-color: #0d0d0d;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

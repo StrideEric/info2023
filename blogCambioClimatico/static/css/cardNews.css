@@ -1,7 +1,28 @@
+h5, p, a {
+    color: #0d0d0d;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+
+}
+
+h5 {
+    font-weight: bold;
+}	
+
 .card {
     height: 400px; /* Define el tamaño fijo de la imagen */
     min-width: calc(33.33% - 20px);
     overflow: hidden; /* Oculta el contenido que se desborda */
+    border: 2px solid #0d0d0d;
+}
+
+.card-footer {
+    border-top: 1px solid #0d0d0d;
+}
+
+.card-header {
+    border-bottom: 1px solid #0d0d0d;
 }
 
 .card .description {
@@ -11,9 +32,9 @@
 }
 
 .card:hover {
-    border-color: #0d6efd; /* Agrega un borde azul al hacer hover */
-    border-radius: 10px; /* Agrega un borde redondeado al hacer hover */
-    box-shadow: 0 0 2px #0d6efd; /* Agrega una sombra al hacer hover */
+    border-color: #6BBF80; /* Agrega un borde azul al hacer hover */
+    border-radius: 5px; /* Agrega un borde redondeado al hacer hover */
+    box-shadow: 0 0 2px #6BBF80; /* Agrega una sombra al hacer hover */
 }
     
 
@@ -25,6 +46,42 @@
 }
 
 
+.modificarNoticia:hover, .detalleNoticia:hover  {
+    color: #57c6f2;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    
+}
+
+.borrarNoticia:hover  {
+    color: #f25757;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+
+.modificarNoticia:hover, .detalleNoticia:hover, .borrarNoticia:hover {
+    font-weight: bold; /* hace mas grueso el texto cuando paso el mouse */
+}
+
+
+.modificarNoticia, .detalleNoticia, .borrarNoticia {
+    color: #0d0d0d;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
 
 
 
+
+.card-footer, .card-header{
+    background-color: #fff ;
+}
+
+
+
+.cardNoticia .card-header,.cardNoticia .card-footer,.cardNoticia .card-body,.cardNoticia .card-img-top {
+    background-color: #f2e6d8;
+}

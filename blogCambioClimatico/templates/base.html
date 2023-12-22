@@ -12,50 +12,56 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/comentario.css' %}">
 </head>
 <body>
     <!-- Navbar -->
-    <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark" data-spy="affix">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="{% url 'inicio' %}">Portada</a>
-            <a class="navbar-brand fw-bold" href="{% url 'noticias:home_noticias' %}">Noticias</a>
-            <a class="navbar-brand fw-bold" href="{% url 'noticias:cargar_noticia' %}">Cargar Noticia</a>
-            <a class="navbar-brand fw-bold" href="{% url 'contacto' %}">Contacto</a>
-            <a class="navbar-brand fw-bold" href="{% url 'nosotros'%}">Nosotros</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'usuarios:perfil'%}">Perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout'%}">Salir</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login'%}">Ingresar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'usuarios:registro_usuario' %}">Registrarme</a>
-                        </li>
-                    {% endif %}
-                </ul>
+    <div class="container">
+        <nav id="navbar" class="navbar fixed-top navbar-expand-lg navbar-dark" data-spy="affix">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold" href="{% url 'inicio' %}">Portada</a>
+                <a class="navbar-brand fw-bold" href="{% url 'noticias:home_noticias' %}">Noticias</a>
+                <a class="navbar-brand fw-bold" href="{% url 'noticias:cargar_noticia' %}">Cargar Noticia</a>
+                <a class="navbar-brand fw-bold" href="{% url 'contacto' %}">Contacto</a>
+                <a class="navbar-brand fw-bold" href="{% url 'nosotros'%}">Nosotros</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'usuarios:perfil'%}">Perfil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout'%}">Salir</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login'%}">Ingresar</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'usuarios:registro_usuario' %}">Registrarme</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     <!-- Contenido principal -->
-    <main>
+    <main class="contenidoPrincipal">
         {% block contenido %}
         {% endblock %}
     </main>
 
 
     <!-- Footer -->
-    <footer class="footer card-footer">
+    <footer class="footer card-footer pieDePagina">
         <div class="container my-5" >
             <footer class="text-center">
                 <!-- Grid container -->
@@ -66,31 +72,27 @@
                 </div>
                 <div>
                     <p>
-                        Puedes encontrarnos en nuestras redes sociales
+                        Puedes seguirnos en nuestras redes sociales para enterarte de los ultimos acontecimientos sobre cambio climato en el mundo!.
                     </p>
                 </div>
                 <div class="container p-1 pb-0 d-flex align-items-center justify-content-center">
                     <!-- Section: Social media -->
                     <section class="mb-4">
                         <!-- Twitter -->
-                        <a class="btn btn-primary btn-floating m-1 iconos disabled" style="background-color: #55acee;" href="#!"
+                        <a class="btn btn-primary btn-floating m-1 iconos" style="background-color: #55acee;" href="https://twitter.com/#"
                             rel="noopener noreferrer" target="_blank" role="button"><i class="fab fa-2x fa-twitter"></i></a>
     
                         <!-- Instagram -->
-                        <a class="btn btn-primary btn-floating m-1 iconos disabled" style="background-color: #ac2bac;" href="https://instagram.com/#"
+                        <a class="btn btn-primary btn-floating m-1 iconos" style="background-color: #ac2bac;" href="https://instagram.com/#"
                             rel="noopener noreferrer" target="_blank" role="button"><i class="fab fa-2x fa-instagram"></i></a>
         
                         <!-- Telegram -->
                         <a class="btn btn-primary btn-floating m-1 iconos" style="background-color: #229ED9    ;" href="https://t.me/#"
                             rel="noopener noreferrer" target="_blank" role="button"><i class="fab fa-2x fa-telegram"></i></a>
-                    
-                        <!-- Linkedin -->
-                        <a class="btn btn-primary btn-floating m-1 iconos" style="background-color: #0082ca;" href="https://www.linkedin.com/in/#/"
-                            rel="noopener noreferrer" target="_blank" role="button"><i class="fab fa-2x fa-linkedin-in"></i></a>
     
-                        <!-- Github -->
-                        <a class="btn btn-primary btn-floating m-1 iconos" style="background-color: #333333;" href="https://github.com/#"
-                            rel="noopener noreferrer" target="_blank" role="button"><i class="fab fa-2x fa-github"></i></a>
+                        <!-- Facebook -->
+                        <a class="btn btn-primary btn-floating m-1 iconos" style="background-color: #1877f2;" href="https://github.com/#"
+                            rel="noopener noreferrer" target="_blank" role="button"><i class="fab fa-2x fa-facebook"></i></a>
                     </section>
                     <!-- Section: Social media -->
             </footer>
