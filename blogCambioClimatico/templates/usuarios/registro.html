@@ -3,21 +3,25 @@
 {% load static %}
 {% block contenido %}
 <link rel="stylesheet" href="{% static 'css/register.css' %}">
-      <div class="registration-form-container">
-        <form action="" method="post" class="registration-form">{% csrf_token %}         
-          <h3 class="col-md-12 mt-5">Registro de usuario</h3>
-          {% for field in form %}
-            <div class="form-group">
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                {{ field }}
-                {% if field.id == 'id_password2' %}
-                    {% for error in field.errors %}
-                      <div class="debug-message">Error en password2: {{ error }}</div>
-                    {% endfor %}
-                {% endif %}
-            </div>
-          {% endfor %}
-          <p><input type="submit"value="Confirmar" class="btn btn-primary submit-button"></p>
+<h3 class="text-center titulo_secundario titulo_secundario_registro">Registro de usuario</h3>
+      <div class=" col-md-12 registration-form-container">
+        <form action="" method="post" class="registration-form">{% csrf_token %}   
+          <div class="col-md-12">      
+              {% for field in form %}
+                <div class="form-group">
+                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                  {{ field }}
+                  {% if field.id == 'id_password2' %}
+                      {% for error in field.errors %}
+                          <div class="debug-message">
+                            Error en password2: {{ error }}
+                          </div>
+                      {% endfor %}
+                  {% endif %}
+                </div>
+              {% endfor %}
+            <p><input type="submit"value="Confirmar" class="btn btn-primary submit-button"></p>
+          </div>
         </form>
       </div>
 

@@ -16,6 +16,7 @@ h1 {
     border-radius: 10px;
     overflow: hidden;
     background-color: #34c69c;
+    height: 100%;
 }
 
 .card-img-top {

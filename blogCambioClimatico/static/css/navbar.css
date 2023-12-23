@@ -9,7 +9,7 @@
 
 
 #navbar a:hover {
-    color: #56bf70;
+    color: #6bbf80;
 }
 
 
@@ -39,7 +39,7 @@
 
 /* Cambia el color de fondo cuando el scroll pasa la sección seleccionada en navbar.js */
 #navbar.scroll-bg {
-    background-color: #56bf70;
+    background-color: #6bbf80;
 }
 
 

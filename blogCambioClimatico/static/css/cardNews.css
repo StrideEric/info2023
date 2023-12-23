@@ -83,5 +83,15 @@ h5 {
 
 
 .cardNoticia .card-header,.cardNoticia .card-footer,.cardNoticia .card-body,.cardNoticia .card-img-top {
-    background-color: #f2e6d8;
+    background-color: #b7cfb7;
+}
+
+
+.card-img-top {
+    height: 20rem;
+    width: 100%;
+    background-color: #b7cfb7;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
