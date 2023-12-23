@@ -23,6 +23,7 @@ h5 {
 
 .card-header {
     border-bottom: 1px solid #0d0d0d;
+    height: 4rem
 }
 
 .card .description {
