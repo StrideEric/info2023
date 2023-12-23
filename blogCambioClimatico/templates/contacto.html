@@ -7,12 +7,11 @@
 <link rel="stylesheet" href="{% static 'css/news.css' %}">
 <link rel="stylesheet" href="{% static 'css/contact.css' %}">
 
-    <h1>CONTACTO</h1>
-
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3>Formulario de contacto</h2>
+                <h3>Contacto</h2>
+                    <p>¿Tienes preguntas, comentarios o sugerencias? ¡Nos encantaría escucharte!</p>                  
                 <div class="card_form">
                     <form class="form" method="post" action="{% url 'contacto' %}">
                         {% csrf_token %}
