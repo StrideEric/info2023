@@ -5,7 +5,7 @@ var pathname = window.location.pathname;
 if (pathname === "/") { // Si la página actual es el index
     document.addEventListener('scroll', function() {
         var navbar = document.getElementById('navbar');
-        var section = document.getElementById('acerca-de'); // Sección que marca el límite para cambiar el navbar, en este caso la primer seccion
+        var section = document.getElementById('categorias'); // Sección que marca el límite para cambiar el navbar, en este caso la primer seccion
         navbar.classList.remove('scroll-bg');
         var scrollPosition = window.scrollY;
 
