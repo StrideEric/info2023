@@ -50,4 +50,3 @@ jobs:
         python manage.py runserver 0.0.0.0:$PORT
       env:
         PORT: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && 8000 || 4000 }}
-
