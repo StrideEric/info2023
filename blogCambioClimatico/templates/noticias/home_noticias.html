@@ -51,7 +51,7 @@
                                     <li><a class="dropdown-item" href="?categoria={{c.id}}">{{c.nombre}}</a></li>
                                 {% endfor %}
                             {% endif %}
-                                                        
+
                         </ul>
                     </div>
                     <div id="filtroDropdown" class="dropdown filtro-dropdown col">
@@ -64,7 +64,7 @@
                                 {% elif request.GET.orden == "a-z" %}
                                     a-z
                                 {% elif request.GET.orden == "z-a" %}
-                                    z-a              
+                                    z-a
                                 {% else %}
                                     Mas reciente
                                 {% endif %}
@@ -107,10 +107,10 @@
                         </div>
                         {% if noticia.imagen %}
                             <a href="{% url 'noticias:detalle_noticia' noticia.pk %}">
-                                <img src="{{ noticia.imagen.url }}" class="card-img-top" alt=""> 
+                                <img src="{{ noticia.imagen.url }}" class="card-img-top" alt="">
                             </a>
                         {% else %}
-                            <img src="{% static 'img/imgNotFound.jpg' %}" class="card-img-top" alt="..."> 
+                            <img src="{% static 'img/imgNotFound.jpg' %}" class="card-img-top" alt="...">
                         {% endif %}
                         <div class="card-body">
                             <!--<h5 class="card-title">{{ noticia.titulo }}</h5>-->
@@ -135,7 +135,7 @@
                                 <div class="col">
                                     <a class="detalleNoticia" href="{% url 'noticias:detalle_noticia' noticia.pk %}">Leer más</a>
                                 </div>
-                            {% if request.user == n.usuario or request.user.is_staff %}
+                            {% if request.user == noticia.usuario or request.user.is_staff %}
                                 <div class="col">
                                     <a class="modificarNoticia" href="{% url 'noticias:modificar_noticia' noticia.pk %}">Modificar</a>
                                 </div>
@@ -149,7 +149,7 @@
                 </div>
             {% endfor %}
         </div>
-    
+
 
     </div>
 
@@ -161,30 +161,30 @@
         document.addEventListener('DOMContentLoaded', function () {
           // Obtener todos los dropdowns en la página
           var dropdowns = document.querySelectorAll('.filtro-dropdown');
-      
+
           // Iterar sobre cada dropdown
           dropdowns.forEach(function(dropdown) {
             // Obtener elementos específicos de cada dropdown
             var dropdownButton = dropdown.querySelector('.dropdown-toggle');
             var dropdownItems = dropdown.querySelectorAll('.dropdown-item');
-      
+
             // Asignar evento de clic a cada elemento del dropdown
             dropdownItems.forEach(function(item) {
               item.addEventListener('click', function() {
                 // Obtener el valor de la opción clickeada
                 var selectedValue = item.getAttribute('data-value');
-      
+
                 // Establecer la clase 'active' en la opción clickeada
                 dropdownItems.forEach(function(item) {
                   item.classList.remove('active');
                 });
                 item.classList.add('active');
-      
+
                 // Actualizar el texto del botón con la opción clickeada
                 dropdownButton.textContent = item.textContent;
               });
             });
-      
+
             // Establecer la opción por defecto al cargar la página
             var defaultOptionValue = "default"; // Cambia esto al valor que desees seleccionar por defecto
             var defaultOption = dropdown.querySelector('.dropdown-menu [data-value="' + defaultOptionValue + '"]');
@@ -193,9 +193,9 @@
           });
         });
       </script>
-      
-      
-                
+
+
+
 {% endblock %}
 
 
